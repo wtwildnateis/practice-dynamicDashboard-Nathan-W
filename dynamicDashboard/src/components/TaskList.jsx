@@ -14,35 +14,28 @@ let taskObjects = [
         taskName: "Dishes",
         completed: true,
     }
-]
+];
 
 
-const TaskList = () => taskObjects.map(task => {
+export const TaskList = () => taskObjects.map(task => {
     return (
         <ul>
 
             <li key={task.id} style={{ color: task.completed ? "green" : "white" }}>
                 {task.taskName} {(task.completed === true) ? `\u2705` : `\u274C`}
             </li>
-            <div>
-                {/* {const completedCount = completedTask.length;
-                    const incompletedCount = incompletedTask.length;}
-                {taskObjects.map(task => {
-
-                    const completedTask = task.filter(task => 
-                    task.isCompleted
-                    );
-                    const incompletedTask = task.filter(task => 
-                    !task.isCompleted
-                    );
-                    
-
-
-                })} */}
-            </div>
 
         </ul >
     )
 })
 
-export default TaskList;
+export const TaskCounter = () => {
+    const completedCount = taskObjects.filter(task => task.completed).length;
+    const incompletedCount = taskObjects.length - completedCount;
+
+    return (
+        <p>Completed Tasks: {completedCount} | Incompleted Tasks: {incompletedCount}</p>
+    );
+
+}
+
